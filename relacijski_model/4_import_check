@@ -28,34 +28,27 @@ class TestDatabase(unittest.TestCase):
                 t.failed_transaction_count_7d,
                 t.previous_fraudulent_activity,
 
-                -- Card details
                 c.id AS card_id,
                 c.card_type,
                 c.card_age,
 
-                -- User details
                 u.id AS user_id,
                 u.age,
                 u.gender,
 
-                -- Device details
                 d.id AS device_id,
                 d.device_type,
 
-                -- Location details
                 l.id AS location_id,
                 l.name AS location,
                 l.population,
 
-                -- State details
                 s.id AS state_id,
                 s.name AS state_name,
 
-                -- Authentication details
                 a.id AS authentication_id,
                 a.authentication_method,
 
-                -- Merchant details
                 m.id AS merchant_id,
                 m.merchant_category
 
