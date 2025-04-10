@@ -85,6 +85,7 @@ class FactTransakcija(Base):
     transaction_id = Column(String(50), index=True)
     transaction_amount = Column(DECIMAL(20,2), nullable=False)
     transaction_distance = Column(DECIMAL(20,2), nullable=False)
+    daily_transaction_count = Column(Integer, nullable=False)
     risk_score = Column(Float, nullable=False)
     fraud_label = Column(Boolean, nullable=False)
 
