@@ -37,11 +37,12 @@ class DimKartica(Base):
     card_id = Column(String(50), index=True)
     card_type = Column(String(50), nullable=False)
     card_age_category = Column(String(50), nullable=False)
-    user_id = Column(String(50), nullable=False)
-
+    
     # Sporo mijenjajuće dimenzije
     date_from = Column(DateTime, nullable=False)
     date_to = Column(DateTime, nullable=True)
+
+    user_id = Column(String(50), nullable=False)
 
 class DimLokacija(Base):
     __tablename__ = 'dim_lokacija'
@@ -84,8 +85,6 @@ class FactTransakcija(Base):
     transaction_tk = Column(Integer, primary_key=True, autoincrement=True)
     transaction_id = Column(String(50), index=True)
     transaction_amount = Column(DECIMAL(20,2), nullable=False)
-    transaction_distance = Column(DECIMAL(20,2), nullable=False)
-    daily_transaction_count = Column(Integer, nullable=False)
     risk_score = Column(Float, nullable=False)
     fraud_label = Column(Boolean, nullable=False)
 
