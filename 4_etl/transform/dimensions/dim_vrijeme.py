@@ -5,7 +5,6 @@ from spark_session import get_spark_session
 def transform_vrijeme_dim(date_df, csv_date_df=None):
     spark = get_spark_session()
 
-    # Baza podataka
     def prepare_df(df):
         return (
             df
@@ -20,6 +19,7 @@ def transform_vrijeme_dim(date_df, csv_date_df=None):
             .withColumn("hour", substring("timestamp", 12, 2).cast("int"))
         )
 
+    # Baza podataka
     db_df = prepare_df(date_df)
 
     # CSV podaci
