@@ -43,7 +43,7 @@ def transform_lokacija_dim(location_df, state_df, csv_location_df=None):
 
         db_loc_df = db_loc_df.unionByName(csv_df)
 
-    # Deiniranje kategorija populacije
+    # Definiranje kategorija populacije
     db_loc_df = db_loc_df.withColumn(
         "population_category",
         when(col("population") >= 10_000_000, "Mega City")
