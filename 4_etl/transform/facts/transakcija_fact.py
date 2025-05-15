@@ -1,4 +1,4 @@
-from pyspark.sql.functions import col, when, year, month, dayofmonth, hour, row_number
+from pyspark.sql.functions import col, when, year, month, dayofmonth, hour, row_number, lower, trim
 from pyspark.sql.window import Window
 
 def transform_transakcija_fact(
@@ -82,7 +82,7 @@ def transform_transakcija_fact(
               (col("c.card_age_category") == col("k.card_age_category")) & 
               (col("c.user_id") == col("k.user_id")), "left")
         .join(dim_lokacija_dedup.alias("l"), col("c.location") == col("l.city"), "left")
-        .join(dim_auth_dedup.alias("a"), col("c.authentication_method") == col("a.authentication_method"), "left")
+        .join(dim_auth_dedup.alias("a"), trim(lower(col("c.authentication_method"))) == trim(lower(col("a.authentication_method"))), "left")
         .join(dim_trgovac_dedup.alias("m"), col("c.merchant_category") == col("m.merchant_category"), "left")
         .join(dim_vrijeme_dedup.alias("d"),
               (year(col("c.timestamp")) == col("d.year")) &
